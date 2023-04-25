@@ -65,11 +65,11 @@ const PatientRecord: React.FC<PatientRecordProps> = ({
                 <p className="text-lg font-medium">{record.pulseRate} bpm</p>
               </div>
               <div className="flex flex-col items-center mx-4">
-                <p className="text-sm text-gray-500">Sys mmHg</p>
-                <p className="text-lg font-medium">{record.sysMmHg}mmHg</p>
+                <p className="text-sm text-gray-500">Systolic</p>
+                <p className="text-lg font-medium">{record.sysMmHg} mmHg</p>
               </div>
               <div className="flex flex-col items-center mx-4">
-                <p className="text-sm text-gray-500">Dia mmHg</p>
+                <p className="text-sm text-gray-500">Diastolic</p>
                 <p className="text-lg font-medium">{record.diaMmHg} mmHg</p>
               </div>
             </div>

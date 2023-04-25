@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate} from 'react-router-dom';
 import Webcam from "react-webcam";
 import axios from "axios";
@@ -61,7 +61,7 @@ const FormAutofill: React.FC = () => {
     }
   };
 
-  useCallback(() => {
+  useEffect(() => {
     let timeoutId:any = null;
 
     const validateToken = async () => {
@@ -77,7 +77,7 @@ const FormAutofill: React.FC = () => {
               }
           }
       } catch(error) {
-          setError("Sign up failed: " + error);
+          setError("Invalid token sign up again: " + error);
       }
     };
 

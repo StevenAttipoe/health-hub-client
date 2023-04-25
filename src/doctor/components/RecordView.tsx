@@ -67,7 +67,7 @@ const RecordView: React.FC<RecordViewProps> = ({
       </div>
 
       <div>
-        <ul className="list-disc list-inside scale-90 -ml-8" style={{width:"40rem", height: "calc(100vh - 25rem)"}}>
+        <ul className="list-disc list-inside scale-90 -ml-8" style={{ height: "calc(100vh - 25rem)"}}>
           {records.map((record: MedicalRecord, index: number) => (
               <PatientRecord
                 key={index}
