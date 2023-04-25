@@ -4,7 +4,6 @@ import { PatientHome } from './Home';
 import NavBar from '../../components/nav/Navbar';
 import Data from '../pages/Data';
 import Scan from './Scan';
-import CardData from '../../interfaces/CardData';
 import { useNavigate } from 'react-router-dom';
 
 export const PatientDashboard: React.FC = () => {
@@ -43,18 +42,9 @@ interface MainProps {
 const Main: React.FC<MainProps> = ({ currentComponent }) => {
   return (
     <div className="main">
-      {currentComponent === 'home' && <PatientHome data={data} />}
+      {currentComponent === 'home' && <PatientHome />}
       {currentComponent === 'scan' && <Scan />}
       {currentComponent === 'data' && <Data />}
     </div>
   );
 }
-
-
-export const data: CardData[] = [
-  {
-    heart_rate: 80,
-    glucose_level: 80,
-    blood_pressure: 80,
-  }
-];
