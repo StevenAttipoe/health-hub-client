@@ -11,7 +11,7 @@ app = Flask(__name__)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="api-path"
 rf = Roboflow(api_key="api-key")
 project = rf.workspace().project("7segmentrecognition_v3")
-CORS(app, origins=['http://localhost:3001'])
+CORS(app, origins=['http://localhost:3001', 'http://localhost:3000'])
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
@@ -55,7 +55,7 @@ def digit_api():
 def vision_api():
     client = vision.ImageAnnotatorClient()
     content = request.json['image'][23:]
-    image = vision.Image(content=base64.b64decode(content + "=="))
+    image = vision.Image(content=base64.b64decode(content))
     response = client.text_detection(image=image)
     
     fields = {
