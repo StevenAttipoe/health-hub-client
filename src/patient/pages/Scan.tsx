@@ -28,6 +28,10 @@ const Scan: React.FC = () => {
   const [sysMmHg, setSysMmHg] = useState('');
   const [diaMmHg, setDiaMmHg] = useState('');
   const [pulseRate, setPulseRate] = useState('');
+  const sysThreshold = { min: 90, max: 140 };
+  const diaThreshold = { min: 60, max: 90 };
+  const pulseThreshold = { min: 60, max: 100 };
+
 
   useEffect(() => {
     const createMedicalRecord = async () => {
@@ -94,10 +98,34 @@ const Scan: React.FC = () => {
   return (
     <div className="flex h-screen justify-center items-center">
       {showResult && (
-        <div className="w-64 h-64 bg-white rounded-lg shadow-lg p-6">
+        <div className="w-96 h-80 bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-medium">
             You have completed the scan
           </h2>
+          {
+            <div className="text-red-800 p-4">
+              {parseInt(sysMmHg) < sysThreshold.min ? (
+                <p>Systolic Pressure (mmHg) is below the normal range. Kindly visit a hospital</p>
+              ) : null}
+               {parseInt(sysMmHg) > sysThreshold.max ? (
+                <p>Systolic Pressure (mmHg) is above the normal range. Kindly visit a hospital</p>
+              ) : null}
+              <br/>
+              {parseInt(diaMmHg) < diaThreshold.min  ? (
+                <p>Diastolic Pressure (mmHg) is below the normal range. Kindly visit a hospital.</p>
+              ) : null}
+              {parseInt(diaMmHg) > diaThreshold.max ? (
+                <p>Diastolic Pressure (mmHg) is above the normal range. Kindly visit a hospital.</p>
+              ) : null}
+              <br/>
+              {parseInt(pulseRate) < pulseThreshold.min ? (
+                <p>Pulse Rate is below the normal range. Kindly visit a hospital.</p>
+              ) : null}
+              {parseInt(pulseRate) > pulseThreshold.max ? (
+                <p>Pulse Rate is above the normal range. Kindly visit a hospital.</p>
+              ) : null}
+            </div>
+          }
         </div>)
       }
     {!showResult && (
